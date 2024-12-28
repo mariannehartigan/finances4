@@ -3,7 +3,6 @@
     :incomes="$page.props.incomes" 
     :futureIncomes="$page.props.futureIncomes" 
     />
-
 </template>
 
 <script setup>
