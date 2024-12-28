@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\FutureIncome::factory(5)->create([
           'income_id' => 1
         ]);
+        \App\Models\FutureIncome::factory(5)->create([
+          'income_id' => 2
+        ]);
         \App\Models\FixedExpense::factory(5)->create();
         \App\Models\VariableExpense::factory(5)->create();
     }
