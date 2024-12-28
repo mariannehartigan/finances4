@@ -9,7 +9,6 @@
             <option>Quarterly</option>
             <option>Yearly</option>
           </select>
-
           <input v-model="form.day_deposited" type="text" />
           <span v-if="
             props.income.day_deposited == 1 ||

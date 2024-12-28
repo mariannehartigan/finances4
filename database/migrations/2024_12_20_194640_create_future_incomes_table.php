@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('future_incomes', function (Blueprint $table) {
             $table->id();
-            $table->text('income_id')->nullable();
             $table->text('effective_date')->nullable();
             $table->text('amount')->nullable();
+            // constrained('incomes') - incomes is the table name
+            $table->foreignIdFor(\App\Models\Income::class, 'income_id')->constrained('incomes');
         });
     }
 

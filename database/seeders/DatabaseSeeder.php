@@ -22,7 +22,11 @@ class DatabaseSeeder extends Seeder
           'name' => 'Test User',
           'email' => 'test2@example.com',
         ]);
-        \App\Models\Income::factory(5)->create();
+        \App\Models\Income::factory(5)->create([
+        ]);
+        \App\Models\FutureIncome::factory(5)->create([
+          'income_id' => 1
+        ]);
         \App\Models\FixedExpense::factory(5)->create();
         \App\Models\VariableExpense::factory(5)->create();
     }

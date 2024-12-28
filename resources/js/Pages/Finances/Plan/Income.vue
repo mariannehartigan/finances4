@@ -1,5 +1,6 @@
 <template>
     <IncomeUpdate v-for="income in incomes" :key="income.id" :income="income"/>
+    <FutureIncome />
     
     <form @submit.prevent="create">
       <div>
@@ -30,8 +31,10 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
 import IncomeUpdate from './IncomeUpdate.vue';
+import FutureIncome from './FutureIncome.vue';
 defineProps({
   incomes: Array,
+  futureIncomes: Array,
 })
 const form = useForm({
   description: null,

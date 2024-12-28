@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserAccountController;
 use App\Http\Controllers\FinancesController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\FutureIncomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthController::class, 'create'])
@@ -20,6 +21,9 @@ Route::get('/', [FinancesController::class, 'allFinancesData'])
   ->name('home');
 
 Route::resource('/income', IncomeController::class)
+  ->only(['store', 'update', 'destroy']);
+
+Route::resource('/futureincome', FutureIncomeController::class)
   ->only(['store', 'update', 'destroy']);
 
 /*
