@@ -19,6 +19,7 @@ class FutureIncomeFactory extends Factory
         return [
             'effective_date' => fake()->date(),
             'amount' => fake()->numberBetween(100, 4000),
+            'notes' => fake()->sentence(),
         ];
     }
 }

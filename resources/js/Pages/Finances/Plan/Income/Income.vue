@@ -4,19 +4,12 @@
 
   <form @submit.prevent="create">
     <div>
-      <div>
-        <label>Description</label>
-        <input v-model="form.description" type="text" />
-      </div>
-      <div>
-        <label>Amount</label>
-        <input v-model="form.amount" type="text" />
-      </div>
-      <div>
-        <label>Day Deposited</label>
-        <input v-model="form.day_deposited" type="text" />
-      </div>
+        <input v-model="form.description" type="text" placeholder="Description"/>
+        <input v-model="form.amount" type="text" placeholder="Amount"/>
+        <input v-model="form.day_deposited" type="text" placeholder="Day Deposited"/>
       <select v-model="form.frequency">
+        <option>Biweekly</option>
+        <option>Bimonthly</option>
         <option>Monthly</option>
         <option>Quarterly</option>
         <option>Yearly</option>
@@ -39,14 +32,14 @@ const form = useForm({
   description: null,
   amount: null,
   day_deposited: null,
-  frequency: "Monthly",
+  frequency: "Biweekly",
   notes: null
   })
 const create = () => {
-  form.post('/income');
+  form.post('/income',  {preserveScroll:true});
   form.description = "";
   form.amount = "";
-  form.frequency = "Monthly";
+  form.frequency = "Biweekly";
   form.day_deposited = "";
 }
 </script>

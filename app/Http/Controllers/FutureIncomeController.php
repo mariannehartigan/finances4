@@ -9,8 +9,8 @@ class FutureIncomeController extends Controller
 {
     public function store(Request $request)
     {
-        /* FutureIncome::create($request->all()); */
-        $request->income()->futureIncomes()->create();
+        FutureIncome::create($request->all());
+        /*$request->futureIncomes()->create();*/
         return redirect()->route('home');
     }
 

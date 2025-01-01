@@ -10,11 +10,11 @@ class FutureIncome extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['income_id', 'effective_date', 'amount'];
+    protected $fillable = ['income_id', 'effective_date', 'amount', 'notes'];
 
     public $timestamps = false;
 
-    public function owner(): BelongsTo
+    public function income(): BelongsTo
     {
         return $this->belongsTo(
             \App\Models\Income::class, 

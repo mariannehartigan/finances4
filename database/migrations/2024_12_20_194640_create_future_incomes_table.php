@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('amount')->nullable();
             $table->text('effective_date')->nullable();
-            // constrained('incomes') - incomes is the table name
-            $table->foreignIdFor(\App\Models\Income::class, 'income_id')->constrained('incomes')->onDelete('cascade');
+            $table->text('notes')->nullable();
         });
     }
 

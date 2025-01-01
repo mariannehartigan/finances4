@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import Income from './Income.vue'
+import Income from './Income/Income.vue'
 defineProps({
   incomes: Array,
   futureIncomes: Array,
