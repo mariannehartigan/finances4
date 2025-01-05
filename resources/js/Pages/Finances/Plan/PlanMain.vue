@@ -5,7 +5,7 @@
 <script setup>
 import Income from './Income/Income.vue'
 defineProps({
-  incomes: Array,
+  incomes: Object,
   futureIncomes: Array,
 })
 </script>

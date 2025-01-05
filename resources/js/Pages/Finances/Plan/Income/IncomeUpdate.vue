@@ -1,4 +1,4 @@
-<template>
+<template><br />{{ income.user_id }}
     <form @submit.prevent="update">
       <div @input="update">
         <input v-model="form.description" type="text"/>
@@ -30,18 +30,8 @@
         <FutureIncome v-for="futureIncome in futureIncomes" :key="futureIncome.id" :futureIncome="futureIncome" :incomeId="income.id"/>
       </div>
     </form>
-<!--making a new form then can delete this first form
-    <form @submit.prevent="createFutureIncome">
-      <input v-model="form.futureIncomeAmount" type="text" placeholder="amount"/>
-      <input v-model="form.effective_date" type="text" placeholder="date"/>
-      <button type="submit">Create Future Income</button>
-    </form>-->
-
     <FutureIncomeCreate :incomeId="income.id" :key="income.id"/>
-    <!--<FutureIncomeCreate v-for="futureIncome in futureIncomes" :key="futureIncome.id" :futureIncome="futureIncome" :incomeId="income.id"/>-->
-
     <Link :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete</Link>
-
   </template>
  
   <script setup>
@@ -60,15 +50,8 @@
     frequency: props.income.frequency,
     day_deposited: props.income.day_deposited,
     notes: props.income.notes,
-    /*effective_date: null,
-    futureIncomeAmount: null,*/
     income_id: props.income.id,
   })
   const update = () => 
     form.put(`/income/${props.income.id}`, {preserveScroll:true})
-  /*const createFutureIncome = () => {
-    form.post(`/futureincome`, {preserveScroll:true});
-    form.effective_date = "";
-    form.futureIncomeAmount = "";
-  }*/
   </script>

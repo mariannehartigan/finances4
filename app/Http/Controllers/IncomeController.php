@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
+    use AuthorizesRequests;
+    public function __construct()
+    {
+        $this->authorizeResource(Income::class, 'income');
+    }
+    
+    
     public function store(Request $request)
     {
-        Income::create($request->all());
+        $request->user()->incomes()->create($request->all());
         return redirect()->route('home');
     }
 

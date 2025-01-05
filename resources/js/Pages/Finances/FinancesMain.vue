@@ -8,7 +8,7 @@
 <script setup>
 import Planmain from './Plan/PlanMain.vue'
 defineProps({
-  incomes: Array,
+  incomes: Object,
   futureIncomes: Array,
 })
 </script>

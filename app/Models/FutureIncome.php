@@ -14,7 +14,7 @@ class FutureIncome extends Model
 
     public $timestamps = false;
 
-    public function income(): BelongsTo
+    public function futureIncomes(): BelongsTo
     {
         return $this->belongsTo(
             \App\Models\Income::class, 

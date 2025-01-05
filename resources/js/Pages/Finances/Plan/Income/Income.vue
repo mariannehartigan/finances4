@@ -25,7 +25,7 @@
 import { useForm } from '@inertiajs/vue3'
 import IncomeUpdate from './IncomeUpdate.vue';
 defineProps({
-  incomes: Array,
+  incomes: Object,
   futureIncomes: Array,
 })
 const form = useForm({

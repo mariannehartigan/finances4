@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Income extends Model
@@ -14,11 +15,18 @@ class Income extends Model
 
     public $timestamps = false;
 
-    public function futureIncomes(): HasMany
+    public function owner(): BelongsTo {
+        return $this->belongsTo(
+            \App\Models\User::class,
+            'user_id'
+        );
+    }
+
+    public function user(): HasMany
     {
         return $this->hasMany(
-            \App\Models\FutureIncome::class,
-            'income_id'
+            \App\Models\Income::class,
+            'user_id'
         );
     }
 }
