@@ -14,7 +14,6 @@ class IncomeController extends Controller
         $this->authorizeResource(Income::class, 'income');
     }
     
-    
     public function store(Request $request)
     {
         $request->user()->incomes()->create($request->all());

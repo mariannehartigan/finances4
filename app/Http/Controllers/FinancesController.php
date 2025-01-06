@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Income;
 use App\Models\ActualIncome;
 use App\Models\FixedExpense;
@@ -17,16 +16,17 @@ use App\Models\FutureVariableExpense;
 
 class FinancesController extends Controller
 {
-    public function allFinancesData(User $user)
+    public function allFinancesData()
     {
-        $id=Auth::id();
+        $this->authorize('viewany', Income::class);
+        /*$id=Auth::id();*/
         return inertia(
             /* This gives the vue page */
             'Finances/FinancesMain',
             /* This passes the data to the vue page */
             [
                 /* Income refers to the model name */
-                'incomes' => Income::all()->where('user_id', $id),
+                'incomes' => Income::all()/*->where('user_id', $id)*/,
                 'actualIncomes' => ActualIncome::all(),
                 'futureIncomes' => FutureIncome::all(),
                 'fixedExpenses' => FixedExpense::all(),
@@ -38,5 +38,4 @@ class FinancesController extends Controller
             ]
         );
     }
-
 }
