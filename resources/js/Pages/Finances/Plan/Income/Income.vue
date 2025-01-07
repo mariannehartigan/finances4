@@ -1,8 +1,7 @@
 <template>
-
   <IncomeUpdate v-for="income in incomes" :key="income.id" :income="income" :futureIncomes="$page.props.futureIncomes"/>
 
-  <form @submit.prevent="create">
+  <form v-if="isAdmin === 1" @submit.prevent="create">
     <div>
         <input v-model="form.description" type="text" placeholder="Description"/>
         <input v-model="form.amount" type="text" placeholder="Amount"/>
@@ -27,6 +26,7 @@ import IncomeUpdate from './IncomeUpdate.vue';
 defineProps({
   incomes: Object,
   futureIncomes: Array,
+  isAdmin: Number,
 })
 const form = useForm({
   description: null,

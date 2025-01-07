@@ -18,7 +18,7 @@ Route::delete('logout', [AuthController::class, 'destroy'])
 Route::resource('user-account', UserAccountController::class)
   ->only(['create', 'store']);
   
-Route::get('/', [FinancesController::class, 'allFinancesData'])
+Route::get('/', [FinancesController::class, 'index'])
   ->name('home');
 
 Route::resource('/income', IncomeController::class)

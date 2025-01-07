@@ -42,6 +42,7 @@
   const props = defineProps({
     income: Object,
     futureIncomes: Array,
+    user_id: Number,
   })
   const form = useForm({
     id: props.income.id,

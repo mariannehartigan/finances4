@@ -13,19 +13,26 @@ use App\Models\FutureFixedExpense;
 use Illuminate\Support\Facades\Auth;
 use App\Models\ActualVariableExpense;
 use App\Models\FutureVariableExpense;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class FinancesController extends Controller
 {
-    public function allFinancesData()
+    /*use AuthorizesRequests;
+
+    public function __construct()
     {
-        $this->authorize('viewany', Income::class);
+        $this->authorizeResource(Income::class, 'income');
+    }*/
+
+    public function index()
+    {
+        /*$this->authorize('view', User::class, Income::class);*/
         /*$id=Auth::id();*/
         return inertia(
             /* This gives the vue page */
             'Finances/FinancesMain',
             /* This passes the data to the vue page */
             [
-                /* Income refers to the model name */
                 'incomes' => Income::all()/*->where('user_id', $id)*/,
                 'actualIncomes' => ActualIncome::all(),
                 'futureIncomes' => FutureIncome::all(),
@@ -34,7 +41,8 @@ class FinancesController extends Controller
                 'futureFixedExpenses' => FutureFixedExpense::all(),
                 'variableExpenses' => VariableExpense::all(),
                 'actualVariableExpenses' => ActualVariableExpense::all(),
-                'futureVariableExpenses' => FutureVariableExpense::all()
+                'futureVariableExpenses' => FutureVariableExpense::all(),
+                'isAdmin' => Auth::id(),
             ]
         );
     }

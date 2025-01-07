@@ -4,10 +4,13 @@ namespace App\Policies;
 
 use App\Models\Income;
 use App\Models\User;
+/*not sure if HandlesAuthorization is needed*/
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
 class IncomePolicy
 {
+    use HandlesAuthorization;
     public function viewAny(User $user): bool
     {
         return true;
@@ -16,6 +19,7 @@ class IncomePolicy
     public function view(User $user, Income $income): bool
     {
         return true;
+        /*return $user->id === $income->user_id;*/
     }
 
     public function create(User $user): bool
@@ -43,3 +47,4 @@ class IncomePolicy
         return true;
     }
 }
+
