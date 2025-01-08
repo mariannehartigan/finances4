@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
-    use AuthorizesRequests;
-    
-    public function __construct()
-    {
-        $this->authorizeResource(Income::class, 'income');
-    }
-    
     public function store(Request $request)
     {
         $request->user()->incomes()->create($request->all());

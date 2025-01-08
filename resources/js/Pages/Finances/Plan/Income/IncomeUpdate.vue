@@ -1,16 +1,20 @@
-<template><br />{{ income.user_id }}
+<template><br />
+<!--<div v-if="isAdmin === 0">
+  {{ form.description }} &nbsp; {{ form.amount }} &nbsp; {{ form.frequency }} &nbsp; {{ form.day_deposited }} &nbsp; {{ form.notes }}
+</div>-->
+  <div>
     <form @submit.prevent="update">
       <div @input="update">
-        <input v-model="form.description" type="text"/>
-        <input v-model="form.amount" type="text" />
-        <select v-model="form.frequency">
+        <input v-model="form.description" type="text" :readonly="isAdmin === 0" />
+        <input v-model="form.amount" type="text" :readonly="isAdmin === 0" />
+        <select v-model="form.frequency" :disabled="isAdmin === 0" >
           <option>Biweekly</option>
           <option>Bimonthly</option>
           <option>Monthly</option>
           <option>Quarterly</option>
           <option>Yearly</option>
         </select>
-        <input v-model="form.day_deposited" type="text" />
+        <input v-model="form.day_deposited" type="text" :readonly="isAdmin === 0" />
         <span v-if="
           props.income.day_deposited == 1 ||
           props.income.day_deposited == 21 ||
@@ -26,12 +30,13 @@
           props.income.day_deposited <= 20 ||
           props.income.day_deposited >= 24 &&
           props.income.day_deposited <= 30">th</span>
-        <input v-model="form.notes" type="text" />  
+        <input v-model="form.notes" type="text" :readonly="isAdmin === 0" />  
         <FutureIncome v-for="futureIncome in futureIncomes" :key="futureIncome.id" :futureIncome="futureIncome" :incomeId="income.id"/>
       </div>
     </form>
     <FutureIncomeCreate :incomeId="income.id" :key="income.id"/>
     <Link :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete</Link>
+  </div>
   </template>
  
   <script setup>
@@ -43,6 +48,7 @@
     income: Object,
     futureIncomes: Array,
     user_id: Number,
+    isAdmin: Number,
   })
   const form = useForm({
     id: props.income.id,
@@ -53,6 +59,10 @@
     notes: props.income.notes,
     income_id: props.income.id,
   })
-  const update = () => 
-    form.put(`/income/${props.income.id}`, {preserveScroll:true})
+  const update = () => {
+    if(props.isAdmin===1) {
+      form.put(`/income/${props.income.id}`, {preserveScroll:true})
+    }
+
+  }
   </script>

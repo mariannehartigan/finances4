@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-/*use App\Models\Income;
-use App\Policies\FinancesPolicy;
-use Illuminate\Support\Facades\Gate;*/
+use App\Models\User;
+use App\Models\Income;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-        /*Gate::policy(Income::class, FinancesPolicy::class);*/
+        Gate::define('view-income', function (User $user, Income $income) {
+            return $user->id === $income->user_id;
+        });
     }
 }

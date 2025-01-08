@@ -1,5 +1,5 @@
 <template>
-  <IncomeUpdate v-for="income in incomes" :key="income.id" :income="income" :futureIncomes="$page.props.futureIncomes"/>
+  <IncomeUpdate v-for="income in incomes" :key="income.id" :income="income" :futureIncomes="$page.props.futureIncomes" :isAdmin="$page.props.isAdmin"/>
 
   <form v-if="isAdmin === 1" @submit.prevent="create">
     <div>

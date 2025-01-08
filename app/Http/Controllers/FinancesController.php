@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Income;
 use App\Models\ActualIncome;
 use App\Models\FixedExpense;
@@ -14,36 +15,34 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ActualVariableExpense;
 use App\Models\FutureVariableExpense;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Gate;
 
 class FinancesController extends Controller
 {
-    /*use AuthorizesRequests;
-
-    public function __construct()
+    public function index(User $user, Income $income)
     {
-        $this->authorizeResource(Income::class, 'income');
-    }*/
+        if(!Gate::allows('view-income', $income)) {
 
-    public function index()
-    {
-        /*$this->authorize('view', User::class, Income::class);*/
-        /*$id=Auth::id();*/
-        return inertia(
-            /* This gives the vue page */
-            'Finances/FinancesMain',
-            /* This passes the data to the vue page */
-            [
-                'incomes' => Income::all()/*->where('user_id', $id)*/,
-                'actualIncomes' => ActualIncome::all(),
-                'futureIncomes' => FutureIncome::all(),
-                'fixedExpenses' => FixedExpense::all(),
-                'actualFixedExpenses' => ActualFixedExpense::all(),
-                'futureFixedExpenses' => FutureFixedExpense::all(),
-                'variableExpenses' => VariableExpense::all(),
-                'actualVariableExpenses' => ActualVariableExpense::all(),
-                'futureVariableExpenses' => FutureVariableExpense::all(),
-                'isAdmin' => Auth::id(),
-            ]
-        );
+        /*if (Gate::forUser($user)->allows('view-income', $income)) {*/
+
+            $id=Auth::id();
+            return inertia(
+                /* This gives the vue page */
+                'Finances/FinancesMain',
+                /* This passes the data to the vue page */
+                [
+                    'incomes' => Income::all()->where('user_id', $id),
+                    'actualIncomes' => ActualIncome::all(),
+                    'futureIncomes' => FutureIncome::all(),
+                    'fixedExpenses' => FixedExpense::all(),
+                    'actualFixedExpenses' => ActualFixedExpense::all(),
+                    'futureFixedExpenses' => FutureFixedExpense::all(),
+                    'variableExpenses' => VariableExpense::all(),
+                    'actualVariableExpenses' => ActualVariableExpense::all(),
+                    'futureVariableExpenses' => FutureVariableExpense::all(),
+                    'isAdmin' => Auth::user()->is_admin,
+                ]
+            );
+        }
     }
 }
