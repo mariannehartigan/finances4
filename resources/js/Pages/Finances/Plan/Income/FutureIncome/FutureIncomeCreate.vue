@@ -19,7 +19,7 @@ const form = useForm({
   income_id: props.incomeId,
   })
 const create = () => {
-    form.post(`/futureincome`, {preserveScroll:true});
+    form.post(`/futureIncome`, {preserveScroll:true});
     form.amount = "";
     form.effective_date = "";
     form.notes = "";

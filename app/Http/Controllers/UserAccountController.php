@@ -24,7 +24,7 @@ class UserAccountController extends Controller
         // $user->save();
         Auth::login($user);
 
-        return redirect()->route('index')
+        return redirect()->route('home')
             ->with('success', 'Account created!');
     }
 }

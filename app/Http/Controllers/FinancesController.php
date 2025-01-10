@@ -21,28 +21,25 @@ class FinancesController extends Controller
 {
     public function index(User $user, Income $income)
     {
-        if(!Gate::allows('view-income', $income)) {
-
-        /*if (Gate::forUser($user)->allows('view-income', $income)) {*/
-
-            $id=Auth::id();
-            return inertia(
-                /* This gives the vue page */
-                'Finances/FinancesMain',
-                /* This passes the data to the vue page */
-                [
-                    'incomes' => Income::all()->where('user_id', $id),
-                    'actualIncomes' => ActualIncome::all(),
-                    'futureIncomes' => FutureIncome::all(),
-                    'fixedExpenses' => FixedExpense::all(),
-                    'actualFixedExpenses' => ActualFixedExpense::all(),
-                    'futureFixedExpenses' => FutureFixedExpense::all(),
-                    'variableExpenses' => VariableExpense::all(),
-                    'actualVariableExpenses' => ActualVariableExpense::all(),
-                    'futureVariableExpenses' => FutureVariableExpense::all(),
-                    'isAdmin' => Auth::user()->is_admin,
-                ]
-            );
-        }
+        $id=Auth::id();
+        return inertia(
+            /* This gives the vue page */
+            'Finances/FinancesMain',
+            /* This passes the data to the vue page */
+            [
+                'incomes' => Income::all()->where('user_id', $id),
+                'actualIncomes' => ActualIncome::all(),
+                'futureIncomes' => FutureIncome::all(),
+                'fixedExpenses' => FixedExpense::all(),
+                'actualFixedExpenses' => ActualFixedExpense::all(),
+                'futureFixedExpenses' => FutureFixedExpense::all(),
+                'variableExpenses' => VariableExpense::all(),
+                'actualVariableExpenses' => ActualVariableExpense::all(),
+                'futureVariableExpenses' => FutureVariableExpense::all(),
+                'isAdmin' => Auth::user()->is_admin,
+                /*remove this one later, just for testing */
+                'userId' => Auth::user()->id,
+            ]
+        );
     }
 }

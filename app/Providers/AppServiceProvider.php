@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('view-income', function (User $user, Income $income) {
-            return $user->id === $income->user_id;
-        });
+        //
     }
 }

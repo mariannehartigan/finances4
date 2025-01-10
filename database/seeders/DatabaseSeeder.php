@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
           'income_id' => 1
         ]);
         \App\Models\FutureIncome::factory(2)->create([
-          'income_id' => 2
+          'income_id' => 3
         ]);
         \App\Models\FixedExpense::factory(5)->create();
         \App\Models\VariableExpense::factory(5)->create();

@@ -23,18 +23,10 @@ Route::get('/', [FinancesController::class, 'index'])
 
 Route::resource('/income', IncomeController::class)
   ->only(['store', 'update', 'destroy'])
+  /*can remove middleware('auth')?*/
   ->middleware('auth');
 
-Route::resource('/futureincome', FutureIncomeController::class)
-  ->only(['store', 'update', 'destroy']);
-
-/*
-
-Route::post('/income', [IncomeController::class, 'store']);
-Route::put('/income/{id}', [IncomeController::class, 'update']);
-Route::delete('/income/{id}', [IncomeController::class, 'destroy']);
-
-create - post /income
-update - put /income/{id})
-delete - delete /income/{id}
-*/
+Route::resource('/futureIncome', FutureIncomeController::class)
+  ->only(['store', 'update', 'destroy'])
+  /*can remove middleware('auth')?*/
+  ->middleware('auth');
