@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('future_fixed_expenses', function (Blueprint $table) {
-            $table->id();
-            $table->text('amount')->nullable();
-            $table->text('effective_date')->nullable();
-            $table->text('notes')->nullable();
+        Schema::table('future_fixed_expenses', function (Blueprint $table) {
+            $table->foreignIdFor(\App\Models\FixedExpense::class, 'fixed_expense_id')->constrained('fixed_expenses')->onDelete('cascade');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('future_fixed_expenses');
+        Schema::table('future_fixed_expenses', function (Blueprint $table) {
+            //
+        });
     }
 };

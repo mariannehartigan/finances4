@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserAccountController;
-use App\Http\Controllers\FinancesController;
-use App\Http\Controllers\IncomeController;
-use App\Http\Controllers\FutureIncomeController;
 use GuzzleHttp\Middleware;
+use App\Models\FixedExpense;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\FinancesController;
+use App\Http\Controllers\UserAccountController;
+use App\Http\Controllers\FutureIncomeController;
+use App\Http\Controllers\FixedExpensesController;
+use App\Http\Controllers\VariableExpensesController;
+use App\Http\Controllers\FutureFixedExpensesController;
 
 Route::get('login', [AuthController::class, 'create'])
   ->name('login');
@@ -22,11 +26,16 @@ Route::get('/', [FinancesController::class, 'index'])
   ->name('home');
 
 Route::resource('/income', IncomeController::class)
-  ->only(['store', 'update', 'destroy'])
-  /*can remove middleware('auth')?*/
-  ->middleware('auth');
+  ->only(['store', 'update', 'destroy']);
 
 Route::resource('/futureIncome', FutureIncomeController::class)
-  ->only(['store', 'update', 'destroy'])
-  /*can remove middleware('auth')?*/
-  ->middleware('auth');
+  ->only(['store', 'update', 'destroy']);
+
+Route::resource('/fixedExpenses', FixedExpensesController::class)
+  ->only(['store', 'update', 'destroy']);
+
+Route::resource('/futureFixedExpenses', FutureFixedExpensesController::class)
+  ->only(['store', 'update', 'destroy']);
+
+Route::resource('/variableExpenses', VariableExpensesController::class)
+  ->only(['store', 'update', 'destroy']);

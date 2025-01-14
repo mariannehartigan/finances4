@@ -33,9 +33,32 @@ class DatabaseSeeder extends Seeder
           'income_id' => 1
         ]);
         \App\Models\FutureIncome::factory(2)->create([
+          'income_id' => 2
+        ]);
+        \App\Models\FutureIncome::factory(2)->create([
           'income_id' => 3
         ]);
-        \App\Models\FixedExpense::factory(5)->create();
+        \App\Models\FutureIncome::factory(2)->create([
+          'income_id' => 4
+        ]);
+        \App\Models\FutureIncome::factory(2)->create([
+          'income_id' => 5
+        ]);
+        \App\Models\FutureIncome::factory(2)->create([
+          'income_id' => 6
+        ]);
+        \App\Models\FixedExpense::factory(3)->create([
+          'user_id' => 1
+        ]);
+        \App\Models\FixedExpense::factory(3)->create([
+          'user_id' => 2
+        ]);
+        \App\Models\FutureFixedExpense::factory(2)->create([
+          'fixed_expense_id' => 1
+        ]);
+        \App\Models\FutureFixedExpense::factory(2)->create([
+          'fixed_expense_id' => 2
+        ]);
         \App\Models\VariableExpense::factory(5)->create();
     }
 }

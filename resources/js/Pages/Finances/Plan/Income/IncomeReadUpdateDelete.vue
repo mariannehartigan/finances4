@@ -1,4 +1,4 @@
-<template>
+<template><br />
   <form @input="update">
     <input v-model="form.description" type="text" :readonly="isAdmin === 0" />
     <input v-model="form.amount" type="text" :readonly="isAdmin === 0" />
@@ -35,7 +35,7 @@
 
   </form>
   <FutureIncomeCreate v-if="isAdmin===1" :incomeId="income.id" :key="income.id"/>
-  <Link v-if="isAdmin" :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete</Link>
+  <Link v-if="isAdmin" :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete Income</Link>
   <br />
 </template>
  

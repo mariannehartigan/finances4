@@ -1,9 +1,9 @@
 <template>
     <form @submit.prevent="create">
-      <input v-model="form.amount" type="text" placeholder="amount"/>
-      <input v-model="form.effective_date" type="text" placeholder="date"/>
-      <input v-model="form.notes" type="text" placeholder="notes"/>
-      <button type="submit">Create Future Income</button>
+      <input style="border: 1px solid blue;" v-model="form.amount" type="text" placeholder="New future income"/>
+      <input style="border: 1px solid blue;" v-model="form.effective_date" type="text" placeholder="date"/>
+      <input style="border: 1px solid blue;" v-model="form.notes" type="text" placeholder="notes"/>
+      <button type="submit">&nbsp;+</button>
     </form>
 </template>
 

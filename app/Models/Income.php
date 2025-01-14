@@ -15,18 +15,16 @@ class Income extends Model
 
     public $timestamps = false;
 
-    public function owner(): BelongsTo {
+    public function user(): BelongsTo {
         return $this->belongsTo(
-            \App\Models\User::class,
-            'user_id'
+            \App\Models\User::class
         );
     }
 
-    public function user(): HasMany
+    public function futureIncomes(): HasMany
     {
         return $this->hasMany(
-            \App\Models\Income::class,
-            'user_id'
+            \App\Models\FutureIncome::class
         );
     }
 }

@@ -10,6 +10,9 @@ class IncomeController extends Controller
     public function store(Request $request)
     {
         $request->user()->incomes()->create($request->all());
+        /*could do it like
+            Income::create($request->all());
+        but user is required for adding user_id to column*/
         return redirect()->route('home');
     }
 

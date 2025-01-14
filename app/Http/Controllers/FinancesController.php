@@ -22,22 +22,31 @@ class FinancesController extends Controller
     public function index(User $user, Income $income)
     {
         $id=Auth::id();
+        $user = Auth::user();
+        $incomes = $user->incomes;
+        //$futureIncomes = $user->incomes()->with('futureIncomes')->get();
+        //dd($user->futureIncomes);
+        $futureIncomes=$user->futureIncomes;
+        //$futureIncomes = $user->incomes->futureIncome;
+
+
         return inertia(
             /* This gives the vue page */
             'Finances/FinancesMain',
             /* This passes the data to the vue page */
             [
-                'incomes' => Income::all()->where('user_id', $id),
-                'actualIncomes' => ActualIncome::all(),
-                'futureIncomes' => FutureIncome::all(),
+                //'incomes' => Income::all()->where('user_id', $id),
+                'incomes' => $incomes,
+                //'futureIncomes' => FutureIncome::all(),
+                'futureIncomes' => $futureIncomes,
                 'fixedExpenses' => FixedExpense::all(),
-                'actualFixedExpenses' => ActualFixedExpense::all(),
                 'futureFixedExpenses' => FutureFixedExpense::all(),
+                /*'actualIncomes' => ActualIncome::all(),
+                'actualFixedExpenses' => ActualFixedExpense::all(),
                 'variableExpenses' => VariableExpense::all(),
                 'actualVariableExpenses' => ActualVariableExpense::all(),
-                'futureVariableExpenses' => FutureVariableExpense::all(),
+                'futureVariableExpenses' => FutureVariableExpense::all(),*/
                 'isAdmin' => Auth::user()->is_admin,
-                /*remove this one later, just for testing */
                 'userId' => Auth::user()->id,
             ]
         );
