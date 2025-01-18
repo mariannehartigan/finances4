@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('amount')->nullable();
             $table->text('frequency')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'user_id')->constrained('users')->onDelete('cascade');
         });
     }
 

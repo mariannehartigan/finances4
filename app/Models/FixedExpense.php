@@ -15,18 +15,10 @@ class FixedExpense extends Model
 
     public $timestamps = false;
 
-    public function owner(): BelongsTo {
-        return $this->belongsTo(
-            \App\Models\User::class,
-            'user_id'
-        );
+    public function user(): BelongsTo {
+        return $this->belongsTo(\App\Models\User::class);
     }
-
-    public function user(): HasMany
-    {
-        return $this->hasMany(
-            \App\Models\FixedExpense::class,
-            'user_id'
-        );
+    public function futureFixedExpenses(): HasMany {
+        return $this->hasMany(\App\Models\FutureFixedExpense::class);
     }
 }

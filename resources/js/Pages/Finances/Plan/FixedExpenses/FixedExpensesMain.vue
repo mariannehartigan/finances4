@@ -1,19 +1,20 @@
 <template>
   <div style="text-align: center;">FIXED EXPENSES</div>
   <div style="border: 4px solid red; text-align: center;">
-  <!--<FixedExpensesReadUpdateDelete 
+
+  <FixedExpensesReadUpdateDelete 
     v-for="fixedExpense in fixedExpenses" 
     :key="fixedExpense.id" 
     :fixedExpense="fixedExpense" 
     :futureFixedExpenses="$page.props.futureFixedExpenses"
     :isAdmin="$page.props.isAdmin" 
-  />-->
+    :userId="$page.props.userId" 
+  />
   <br /> 
   <FixedExpenseCreate 
     :fixedExpenses="$page.props.fixedExpenses" 
     :isAdmin="$page.props.isAdmin" 
-    :userId="$page.props.userId"
-  />
+    :userId="$page.props.userId"/>
   </div>
   </template>
   
@@ -27,4 +28,3 @@
     userId: Number,
   })
   </script>
-  

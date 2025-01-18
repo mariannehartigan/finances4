@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actual_variable_expenses', function (Blueprint $table) {
-            $table->id();
-            $table->text('description')->nullable();
-            $table->text('amount')->nullable();
-            $table->foreignIdFor(\App\Models\User::class, 'user_id')->constrained('users');
+        Schema::table('future_variable_expenses', function (Blueprint $table) {
+            $table->foreignIdFor(\App\Models\VariableExpense::class, 'variable_expense_id')->constrained('variable_expenses')->onDelete('cascade');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actual_variable_expenses');
+        Schema::table('future_variable_expenses', function (Blueprint $table) {
+            //
+        });
     }
 };

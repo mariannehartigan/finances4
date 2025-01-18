@@ -9,7 +9,7 @@ class FixedExpensesController extends Controller
 {
     public function store(Request $request)
     {
-        $request->user()->fixedExpense()->create($request->all());
+        $request->user()->fixedExpenses()->create($request->all());
         return redirect()->route('home');
     }
 

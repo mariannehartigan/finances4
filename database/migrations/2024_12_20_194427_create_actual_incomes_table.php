@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('day')->nullable();
             $table->text('description')->nullable();
             $table->text('amount')->nullable();
-            $table->text('notes')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'user_id')->constrained('users');
         });
     }
 

@@ -11,6 +11,7 @@
           <option>Quarterly</option>
           <option>Yearly</option>
         </select>
+        <input v-model="form.notes" type="text" placeholder="notes"/>
         <div style="display: inline-block">
           <button type="submit">&nbsp;+</button>
         </div>
@@ -38,6 +39,7 @@
     form.amount = "";
     form.frequency = "Biweekly";
     form.day_deposited = "";
+    form.notes = "";
   }
   </script>
   

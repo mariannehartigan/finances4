@@ -26,7 +26,7 @@
       props.income.day_deposited >= 24 &&
       props.income.day_deposited <= 30">th</span>
     <input v-model="form.notes" type="text" :readonly="isAdmin === 0" />  
-
+    <Link v-if="isAdmin" :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp-</Link>
     <FutureIncomeReadUpdateDelete v-for="futureIncome in futureIncomes" 
       :key="futureIncome.id" 
       :futureIncome="futureIncome" 
@@ -35,7 +35,7 @@
 
   </form>
   <FutureIncomeCreate v-if="isAdmin===1" :incomeId="income.id" :key="income.id"/>
-  <Link v-if="isAdmin" :href="`/income/${props.income.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete Income</Link>
+
   <br />
 </template>
  

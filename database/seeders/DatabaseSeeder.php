@@ -29,6 +29,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\Income::factory(3)->create([
           'user_id' => 2
         ]);
+        \App\Models\ActualIncome::factory(3)->create([
+          'user_id' => 1
+        ]);
+        \App\Models\ActualIncome::factory(3)->create([
+          'user_id' => 2
+        ]);
         \App\Models\FutureIncome::factory(2)->create([
           'income_id' => 1
         ]);
@@ -53,12 +59,41 @@ class DatabaseSeeder extends Seeder
         \App\Models\FixedExpense::factory(3)->create([
           'user_id' => 2
         ]);
+        \App\Models\ActualFixedExpense::factory(3)->create([
+          'user_id' => 1
+        ]);
+        \App\Models\ActualFixedExpense::factory(3)->create([
+          'user_id' => 2
+        ]);
         \App\Models\FutureFixedExpense::factory(2)->create([
           'fixed_expense_id' => 1
         ]);
         \App\Models\FutureFixedExpense::factory(2)->create([
           'fixed_expense_id' => 2
         ]);
-        \App\Models\VariableExpense::factory(5)->create();
+        \App\Models\FutureFixedExpense::factory(2)->create([
+          'fixed_expense_id' => 6
+        ]);
+        \App\Models\VariableExpense::factory(3)->create([
+          'user_id' => 1
+        ]);
+        \App\Models\VariableExpense::factory(3)->create([
+          'user_id' => 2
+        ]);
+        \App\Models\FutureVariableExpense::factory(2)->create([
+          'variable_expense_id' => 1
+        ]);
+        \App\Models\FutureVariableExpense::factory(2)->create([
+          'variable_expense_id' => 2
+        ]);
+        \App\Models\FutureVariableExpense::factory(2)->create([
+          'variable_expense_id' => 6
+        ]);
+        \App\Models\ActualVariableExpense::factory(3)->create([
+          'user_id' => 1
+        ]);
+        \App\Models\ActualVariableExpense::factory(3)->create([
+          'user_id' => 2
+        ]);
     }
 }

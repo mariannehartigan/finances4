@@ -9,10 +9,12 @@
     :isAdmin="$page.props.isAdmin"
     :userId="$page.props.userId"
   />
-
   <br />
 
-  <IncomeCreate :incomes="$page.props.incomes" :isAdmin="$page.props.isAdmin" :userId="$page.props.userId"/>
+  <IncomeCreate 
+    :incomes="$page.props.incomes" 
+    :isAdmin="$page.props.isAdmin" 
+    :userId="$page.props.userId"/>
   </div>
 </template>
 

@@ -13,6 +13,7 @@
           <option>Quarterly</option>
           <option>Yearly</option>
         </select>
+        <input v-model="form.notes" type="text" placeholder="notes"/>
         <div style="display: inline-block">
           <button type="submit">&nbsp;+</button>
         </div>
@@ -39,7 +40,7 @@ const create = () => {
     form.description = "";
     form.amount = "";
     form.day_due = "";
-    form.frequency = "Biweekly";
+    form.frequency = "Monthly";
     form.notes = "";
 }
 </script>

@@ -2,63 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FutureVariableExpense;
 use Illuminate\Http\Request;
 
 class FutureVariableExpensesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        FutureVariableExpense::create($request->all());
+        return redirect()->route('home');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(Request $request, FutureVariableExpense $futureVariableExpense)
     {
-        //
+        $futureVariableExpense->update($request->all());
+        return redirect()->route('home');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function destroy(FutureVariableExpense $futureVariableExpense)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $futureVariableExpense->delete();
+        return redirect()->back();
     }
 }

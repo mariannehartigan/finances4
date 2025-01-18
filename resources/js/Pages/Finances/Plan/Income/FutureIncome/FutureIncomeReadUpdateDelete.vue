@@ -4,10 +4,10 @@
       <input v-model="form.amount" type="text" :readonly="isAdmin === 0"/>
       <input v-model="form.effective_date" type="text" :readonly="isAdmin === 0"/>
       <input v-model="form.notes" type="text" :readonly="isAdmin === 0"/>
+      <div style="display: inline-block" v-show="isAdmin">
       <Link :href="`/futureIncome/${props.futureIncome.id}`" method="DELETE" as="button" preserve-scroll>&nbsp-</Link>
+      </div>
     </form>
-    <div v-show="isAdmin">
-    </div>
   </div>
 </template>
 

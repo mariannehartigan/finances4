@@ -1,13 +1,14 @@
 <template>
-    <div v-if="expenseId===futureIncome.income_id">
+    <div v-if="fixedExpenseId===futureFixedExpense.fixed_expense_id">
       <form @input="update">
         <input v-model="form.amount" type="text" :readonly="isAdmin === 0"/>
         <input v-model="form.effective_date" type="text" :readonly="isAdmin === 0"/>
         <input v-model="form.notes" type="text" :readonly="isAdmin === 0"/>
-      </form>
-      <div v-show="isAdmin">
-      <Link :href="`/futureIncome/${props.futureIncome.id}`" method="DELETE" as="button" preserve-scroll>&nbsp Delete Future Income</Link>
+
+      <div style="display: inline-block" v-show="isAdmin">
+      <Link :href="`/futureFixedExpenses/${props.futureFixedExpense.id}`" method="DELETE" as="button" preserve-scroll>&nbsp-</Link>
       </div>
+    </form>
     </div>
   </template>
   
@@ -16,7 +17,7 @@
     import { Link } from '@inertiajs/vue3'
     const props = defineProps({
       futureFixedExpense: Object,
-      expenseId: Number,
+      fixedExpenseId: Number,
       isAdmin: Number,
     })
     const form = useForm({

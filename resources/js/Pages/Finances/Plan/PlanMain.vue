@@ -1,5 +1,4 @@
 <template>
-  {{ futureIncomes }}
     <IncomeMain 
       :incomes="$page.props.incomes" 
       :futureIncomes="$page.props.futureIncomes"
@@ -10,10 +9,11 @@
       :futureFixedExpenses="$page.props.futureFixedExpenses" 
       :isAdmin="$page.props.isAdmin" 
       :userId="$page.props.userId"/>
-    <!--<VariableExpensesMain 
+    <VariableExpensesMain 
       :variableExpenses="$page.props.variableExpenses" 
+      :futureVariableExpenses="$page.props.futureVariableExpenses" 
       :isAdmin="$page.props.isAdmin"
-      :userId="$page.props.userId" />-->
+      :userId="$page.props.userId" />
 
 </template>
 
@@ -27,6 +27,7 @@ defineProps({
   fixedExpenses: Object,
   futureFixedExpenses: Array,
   variableExpenses: Object,
+  futureVariableExpenses: Array,
   isAdmin: Number,
   userId: Number,
 })

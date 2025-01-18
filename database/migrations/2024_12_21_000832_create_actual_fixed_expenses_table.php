@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('actual_fixed_expenses', function (Blueprint $table) {
-            $table->text('id')->nullable();
+            $table->id();
+            $table->text('year')->nullable();
+            $table->text('month')->nullable();
+            $table->text('day')->nullable();
             $table->text('description')->nullable();
             $table->text('amount')->nullable();
-            $table->text('day_due')->nullable();
             $table->text('notes')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'user_id')->constrained('users');
         });
     }
 

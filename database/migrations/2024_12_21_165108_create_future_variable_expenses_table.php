@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('future_variable_expenses', function (Blueprint $table) {
             $table->text('id')->nullable();
-            $table->text('variable_expense_id')->nullable();
             $table->text('amount')->nullable();
             $table->text('effective_date')->nullable();
         });

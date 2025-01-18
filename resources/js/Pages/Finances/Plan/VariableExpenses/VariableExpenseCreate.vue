@@ -1,7 +1,7 @@
 <template>
     <form v-if="isAdmin === 1" @submit.prevent="create">
       <div>
-          <input v-model="form.description" type="text" placeholder="Description"/>
+          <input v-model="form.description" type="text" placeholder="New variable expense"/>
           <input v-model="form.amount" type="text" placeholder="Amount"/>
         <select v-model="form.frequency">
           <option>Daily</option>
@@ -12,8 +12,8 @@
           <option>Quarterly</option>
           <option>Yearly</option>
         </select>
-        <div>
-          <button type="submit">Create Variable Expense</button>
+        <div style="display: inline-block">
+          <button type="submit">&nbsp;+</button>
         </div>
       </div>
     </form>
@@ -22,8 +22,9 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3'
 defineProps({
-    variableExpense: Object,
-    isAdmin: Number,
+    variableExpenses: Object,
+    isAdmin: Number,   
+    userId: Number,
 })
 const form = useForm({
     description: null,

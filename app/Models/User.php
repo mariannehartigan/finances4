@@ -42,22 +42,29 @@ class User extends Authenticatable
             set: fn ($value) => Hash::make($value),
         );
     }
-/*These function names may or may not be called, but they get called in the controller (or web.php)*/
-    public function incomes(): HasMany
-    {
-        return $this->hasMany(
-            \App\Models\Income::class
-        );
-    } 
-    public function futureIncomes(): HasManyThrough
-    {
-        return $this->hasManyThrough(\App\Models\FutureIncome::class, \App\Models\Income::class);
-    }
-    public function fixedExpenses(): HasMany
-    {
-        return $this->hasMany(\App\Models\FixedExpense::class,
-        'user_id' 
-        );
-    }
 
+/* These function names may or may not be called, but they get called in the controller */
+    public function incomes(): HasMany {
+        return $this->hasMany(\App\Models\Income::class);    } 
+    public function futureIncomes(): HasManyThrough {
+        return $this->hasManyThrough(\App\Models\FutureIncome::class, \App\Models\Income::class);}
+    public function actualIncomes(): HasMany {
+        return $this->hasMany(
+            \App\Models\ActualIncome::class);}
+
+    public function fixedExpenses(): HasMany {
+        return $this->hasMany(\App\Models\FixedExpense::class);}
+    public function futureFixedExpenses(): HasManyThrough {
+        return $this->hasManyThrough(\App\Models\FutureFixedExpense::class, \App\Models\FixedExpense::class);}
+    public function actualFixedExpenses(): HasMany {
+            return $this->hasMany(
+                \App\Models\ActualFixedExpense::class);}
+
+    public function variableExpenses(): HasMany {
+        return $this->hasMany(\App\Models\VariableExpense::class);}
+    public function futureVariableExpenses(): HasManyThrough {
+        return $this->hasManyThrough(\App\Models\FutureVariableExpense::class, \App\Models\VariableExpense::class);}
+    public function actualVariableExpenses(): HasMany {
+        return $this->hasMany(
+            \App\Models\ActualVariableExpense::class);}
 }

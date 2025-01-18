@@ -16,15 +16,9 @@ class Income extends Model
     public $timestamps = false;
 
     public function user(): BelongsTo {
-        return $this->belongsTo(
-            \App\Models\User::class
-        );
+        return $this->belongsTo(\App\Models\User::class);
     }
-
-    public function futureIncomes(): HasMany
-    {
-        return $this->hasMany(
-            \App\Models\FutureIncome::class
-        );
+    public function futureIncomes(): HasMany {
+        return $this->hasMany(\App\Models\FutureIncome::class);
     }
 }

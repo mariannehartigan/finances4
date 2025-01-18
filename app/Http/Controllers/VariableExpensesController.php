@@ -9,7 +9,7 @@ class VariableExpensesController extends Controller
 {
     public function store(Request $request)
     {
-        VariableExpense::create($request->all());
+        $request->user()->variableExpenses()->create($request->all());
         return redirect()->route('home');
     }
 
